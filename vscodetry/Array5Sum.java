@@ -34,48 +34,35 @@ public class Array5Sum {
     }
 
     public static int[] arraySum (int[] array1, int[] array2, int arrayLength) {
-        int[] sumArray = new int[arrayLength];
+        int[] sumArray = new int[arrayLength+1];
 
         int saveBefore = 0;
         int num = 0;
 
-        for(int n = arrayLength-1; n >= 0; n--){
+		for(int n = arrayLength; n >= 0; n--){
+			
+			if (n != 0){
+				
+				num = array1[n-1] + array2[n-1] + saveBefore;
 
-            if(n == arrayLength){
-                if ((array1[n] + array2[n]) > 9) {
-                    num = array1[n] + array2[n];
-                    saveBefore = 1;
-                    num = num - 10;
-                    sumArray[n] = num;
-                } 
-            } else {
-                if(saveBefore ==1) {
-                    if ((array1[n] + array2[n]) > 9) {
-                        num = array1[n] + array2[n] + saveBefore;
-                        saveBefore = 1;
-                        num = num - 10;
-                        sumArray[n] = num;
-                    }else {
-                        num = array1[n] + array2[n] + saveBefore;
-                        saveBefore = 0;
-                        num = num - 10;
-                        sumArray[n] = num;
-                    }
-                    
-                } else{
-                    if ((array1[n] + array2[n]) > 9) {
-                        num = array1[n] + array2[n] + saveBefore;
-                        saveBefore = 1;
-                        num = num - 10;
-                        sumArray[n] = num;
-                    }else {
-                        num = array1[n] + array2[n] + saveBefore;
-                        saveBefore = 0;
-                        num = num - 10;
-                        sumArray[n] = num;
-                    }
-                }
-            }
+				if(num > 9){
+					saveBefore = 1;
+					sumArray[n] = num - 10;
+				} else {
+					saveBefore = 0;
+					sumArray[n] = num;
+				}
+			} else {
+
+				if(saveBefore == 1){
+					sumArray[0] = 1;
+				} else {
+					sumArray[0] = 0;
+				}
+
+			}
+
+            
 
         }
         
