@@ -36,7 +36,7 @@ public class VoteProgram {
             }
 
             voteCount++;
-        }while(voteCount!=5 && keepCounting);
+        }while(voteCount!=500000 && keepCounting);
 
         String max = "";
 
@@ -115,7 +115,7 @@ public class VoteProgram {
     //parameters: scanner, boy, elemental, nimona, robot, spider, votes
     //Return: movie selected and percentage
     public static void calcPercent(Scanner sk,int boy, int elemental, int nimona, int robot, 
-    int spider, int votes){
+    int spider, double votes){
 
         double percent = 0.0;
         String name = "";
