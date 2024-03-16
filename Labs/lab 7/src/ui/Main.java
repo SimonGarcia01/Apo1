@@ -3,6 +3,7 @@
  * @since 2024-03-15
  */
 
+package ui;
 
 import java.util.Scanner;
 
@@ -102,7 +103,6 @@ public class Main {
     * @param names Array that holds 20 names.
     * @param expenses Array that holds 20 expenses.
     * @param position index where the name and expense are saved.
-    * @return None. Updates two arrays.
     */
     public static void registerExpense(Scanner sk, String[] names, double[] expenses, 
     int position){
@@ -136,7 +136,6 @@ public class Main {
     * @param sk Scanner name used in main.
     * @param names Array that holds 20 names.
     * @param expenses Array that holds 20 expenses.
-    * @return None. Onle prints the calculated total.
 	*/
     public static void totalExpense(Scanner sk, String[] names, double[] expenses){
 
@@ -174,7 +173,6 @@ public class Main {
     * @param sk Scanner name used in main.
     * @param expenses Array that holds 20 expenses.
     * @param counter int that holds how many users are in the expenses array.
-    * @return None. Prints the average of all the elements in expenses.
 	*/
     public static void avgExpense(Scanner sk, double[] expenses, int counter){
         double totalExpenses = 0;
