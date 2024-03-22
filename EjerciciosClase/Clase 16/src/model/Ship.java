@@ -10,12 +10,14 @@ public class Ship{
 	//Relations
 	
 	//methods
-	public Ship(String name, double limMin, double limMin){
+	public Ship(String name, double limMin, double limMax){
 		this.name = name;
 		this.limMin = limMin;
 		this.limMax = limMax;
 	}
 	
+
+	//Getters and Setters
 	public String getName(){
 		return name;
 	}
@@ -23,8 +25,16 @@ public class Ship{
 	public void setName(String newName){
 		this.name = newName;
 	}
+
+	public double getLimMin(){
+		return limMin;
+	}
 	
-	public void getLimMax(){
+	public void setLimMin(double newLimMin){
+		this.limMin = newLimMin;
+	}
+	
+	public double getLimMax(){
 		return limMax;
 	}
 	
