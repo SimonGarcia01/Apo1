@@ -13,24 +13,30 @@ public class MorganController{
 	
 	//relations
 	private Ship ships;
-	private Client client1;
-	private Client client2;
-	private Client client3;
-	private Client client4;
-	private Client client5;
+	private Client[] clients;
+
+	//old relationship with independant clients
+	// private Client client1;
+	// private Client client2;
+	// private Client client3;
+	// private Client client4;
+	// private Client client5;
 	
 	//Methods
 	public MorganController(String id, String name, String nameShip, double minimum, double maximum){
 		this.id = id;
 		this.name = name;
 		
-		ships = new Ship(nameShip, minimum, maximum);
+		this.ships = new Ship(nameShip, minimum, maximum);
 
-		client1 = null;
-		client2 = null;
-		client3 = null;
-		client4 = null;
-		client5 = null;
+		this.clients = new Client[5];
+
+		//Done by single client at a time
+		// client1 = null;
+		// client2 = null;
+		// client3 = null;
+		// client4 = null;
+		// client5 = null;
 
 		//To test the available method
 		// client1 = new Client();
@@ -71,19 +77,29 @@ public class MorganController{
 		String message = "";
 		
 		//First, check if there is space to register a new client
-		boolean available = availableClient(client1, client2, client3, client4, client5);
+		
+		boolean available = availableClient();
+		
+		//Old method for single clients
+		// boolean available = availableClient(client1, client2, client3, client4, client5);
 		
 		if(available){
-			//Second, checkj if the client we want to add already exists 
+			//Second, check if the client we want to add already exists 
+			
 			boolean clientExists = searchClient(nit);
+
+			//Old method for single client
+			//boolean clientExists = searchClient(nit);
 
 			if (clientExists){
 				message = "El cliente ya existe, ingrese otro.";
 			} else {
 				//Third, assign the new client to a free space
+				
+
 				Client temporalClient = new Client(name, registrationNumber, registrationDate, 
 				nit, transportedKilos, payments);
-				message = storingPositioClient(temporalClient);
+				message = storingPositionClient(temporalClient);
 			}
 		}else{
 			message = "Error: No hay mas espacio para otro cliente.";
@@ -93,79 +109,142 @@ public class MorganController{
 		
 	}
 
-	public boolean availableClient(Client client1, Client client2, Client client3, Client 
-	client4, Client client5){
-		boolean space = false;
+	public boolean availableClient(){
+		boolean availableSpace = false;
 
-		if(client1==null||client2==null||client3==null||client4==null||client5==null){
-			space = true;
+		for(Client client : clients){
+
+			if(client==null){
+				availableSpace = true;
+			}
+
 		}
 
-		return space;
+		return availableSpace;
 	}
+
+	//Old method for single clients
+	// public boolean availableClient(Client client1, Client client2, Client client3, Client 
+	// client4, Client client5){
+	// 	boolean space = false;
+
+	// 	if(client1==null||client2==null||client3==null||client4==null||client5==null){
+	// 		space = true;
+	// 	}
+
+	// 	return space;
+	// }
 
 	public boolean searchClient(String nit){
+		boolean duplicate = false;
 
-		boolean findNit= false;
-
-		if(client1 != null && client1.getNit().equals(nit)){
-			findNit = true;
-		}else if(client2 != null && client2.getNit().equals(nit)){
-			findNit = true;
-		}else if(client3 != null && client3.getNit().equals(nit)){
-			findNit = true;
-		}else if(client4 != null && client4.getNit().equals(nit)){
-			findNit = true;
-		}else if(client5 != null && client5.getNit().equals(nit)){
-			findNit = true;
+		for(Client client:clients){
+			if(client != null && client.getNit().equals(nit)){
+				duplicate = true;
+			}
 		}
 
-		return findNit;
-
+		return duplicate;
 	}
 
-	public String storingPositioClient(Client temporal){
+	//Old method for single clients
+	// public boolean searchClient(String nit){
 
-		if(client1==null){
-			client1 = temporal;
-		}else if(client2==null){
-			client2 = temporal;
-		}else if(client3==null){
-			client3 = temporal;
-		}else if(client4==null){
-			client4 = temporal;
-		}else {
-			client5 = temporal;
+	// 	boolean findNit= false;
+
+	// 	if(client1 != null && client1.getNit().equals(nit)){
+	// 		findNit = true;
+	// 	}else if(client2 != null && client2.getNit().equals(nit)){
+	// 		findNit = true;
+	// 	}else if(client3 != null && client3.getNit().equals(nit)){
+	// 		findNit = true;
+	// 	}else if(client4 != null && client4.getNit().equals(nit)){
+	// 		findNit = true;
+	// 	}else if(client5 != null && client5.getNit().equals(nit)){
+	// 		findNit = true;
+	// 	}
+
+	// 	return findNit;
+
+	// }
+
+	public String storingPositionClient(Client temporal) {
+		String message = "";
+		boolean added = false;
+
+		for (int i = 0; i < clients.length && !added; i++) {
+			if (clients[i] == null) {
+				clients[i] = temporal;
+				message = "El Cliente fue agregado con exito";
+				added = true;
+			}
 		}
 
-		return "El cliente se ha guardado exitosamente.";
+		if (!added) {
+			message = "Error: No hay espacio disponible para agregar al cliente.";
+		}
+
+		return message;
 	}
+
+	//Old method for single cliente
+	// public String storingPositioClient(Client temporal){
+
+	// 	if(client1==null){
+	// 		client1 = temporal;
+	// 	}else if(client2==null){
+	// 		client2 = temporal;
+	// 	}else if(client3==null){
+	// 		client3 = temporal;
+	// 	}else if(client4==null){
+	// 		client4 = temporal;
+	// 	}else {
+	// 		client5 = temporal;
+	// 	}
+
+	// 	return "El cliente se ha guardado exitosamente.";
+	// }
 	
 	public String displayAllClients(){
-		String allClients= "";
+		String message = "";
 
-		if(client1!=null) {
-			allClients = allClients + client1.toString();
+		for(Client client:clients){
+
+			if(client != null){
+				message += client.toString();
+			}
+
 		}
 
-		if(client2!=null) {
-			allClients = allClients + client2.toString();
-		}
-
-		if(client3!=null) {
-			allClients = allClients + client3.toString();
-		}
-
-		if(client4!=null) {
-			allClients = allClients + client4.toString();
-		}
-
-		if(client5!=null) {
-			allClients = allClients + client5.toString();
-		}
-
-		return allClients;
+		return message;
 	}
+
+	//Old method for single clients
+	// public String displayAllClients(){
+	// 	String allClients= "";
+
+	// 	if(client1!=null) {
+	// 		allClients = allClients + client1.toString();
+	// 	}
+
+	// 	if(client2!=null) {
+	// 		allClients = allClients + client2.toString();
+	// 	}
+
+	// 	if(client3!=null) {
+	// 		allClients = allClients + client3.toString();
+	// 	}
+
+	// 	if(client4!=null) {
+	// 		allClients = allClients + client4.toString();
+	// 	}
+
+	// 	if(client5!=null) {
+	// 		allClients = allClients + client5.toString();
+	// 	}
+
+	// 	return allClients;
+	// }
 
 	//Getters and setters
 	public String getName() {
@@ -190,6 +269,14 @@ public class MorganController{
 
 	public void setShips(Ship ships) {
 		this.ships = ships;
+	}
+
+	public Client[] getClients() {
+		return clients;
+	}
+
+	public void setClients(Client[] clients) {
+		this.clients = clients;
 	}
 	
 }

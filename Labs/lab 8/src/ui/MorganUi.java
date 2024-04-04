@@ -37,8 +37,8 @@ public class MorganUi{
 					break;
 
 				case 4://to display all clients
-				displayAllClients(objMorgan);
-				break;
+					displayAllClients(objMorgan);
+					break;
 				
 				case 9:
 					exit = true;
