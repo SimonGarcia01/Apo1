@@ -68,9 +68,29 @@ public enum CommunityType {
             case 3:
                 communityType = RAIZAL;
                 break;
+			default:
+				communityType = null;
+				break;
         }
 
         return communityType;
+    }
+
+	public static int communityTypeToInt(CommunityType literal){
+        int intCommunityType = 0;
+        switch(literal){
+            case AFRO:
+                intCommunityType = 1;
+                break;
+            case INDIGENOUS:
+                intCommunityType = 2;
+                break;
+            case RAIZAL:
+                intCommunityType = 3;
+                break;
+        }
+
+        return intCommunityType;
     }
 
     //CONSTRUCTOR

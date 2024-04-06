@@ -38,6 +38,7 @@ public enum Challenge {
         return descriptions;
     }
 
+
     //CHANGE AN INT TO A COMMUNITYTYPE
     /**
 	* <p><b>intToChallenge</b></p>
@@ -77,6 +78,30 @@ public enum Challenge {
         }
 
         return challenge;
+    }
+
+	//CHANGE A CHALLENGE TO AN INT
+	public static int challengeToInt(Challenge literal){
+        int intChallenge = 0;
+
+		if(literal != null){
+			switch(literal){
+				case HOSPITALS:
+					intChallenge = 1;
+					break;
+				case SCHOOLS:
+					intChallenge = 2;
+					break;
+				case WATER:
+					intChallenge = 3;
+					break;
+				case FOOD:
+					intChallenge = 4;
+					break;
+			}
+		}
+
+        return intChallenge;
     }
 
     //CONSTRUCTOR

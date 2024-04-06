@@ -9,9 +9,9 @@ import java.text.ParseException;
 public class Main{
     
     public static Scanner sk = new Scanner(System.in);
-    public static void main(String[] args){
 
-        Controller controller = new Controller();
+    public static Controller controller = new Controller();
+    public static void main(String[] args){
 
         //Variables for the general menu
         int generalOption = 0;
@@ -39,27 +39,27 @@ public class Main{
                         switch(adminOption){
                             case 1:
                                 //Register a community
-                                registerCommunity(controller);
+                                registerCommunity();
                                 break;
                             case 2:
                                 //Register a place
-                                registerPlace(controller);
+                                registerPlace();
                                 break;
                             case 3:
                                 //Add a product to a commmunity
-                                addProduct(controller);
+                                addProduct();
                                 break;
                             case 4:
                                 //delete a product from a community
-                                deleteProduct(controller);
+                                deleteProduct();
                                 break;
                             case 5:
                                 //Display the number of comunities based on their community type
-                                displayCommunityTypeCount(controller);
+                                displayCommunityTypeCount();
                                 break;
                             case 6:
                                 //Show if there is a community without school and a hospital
-
+                                tryNoSchoolHospital();
                                 break;
 
                             case 9:
@@ -173,7 +173,7 @@ public class Main{
 
         System.out.println("-----------------------------------------------------------");
 		System.out.println("Menu of Administrative Options: ");
-		System.out.println("\t1. Register a community\n\t2. Register a place\n\t3. Add a product to a community\n\t4. Delete a product from a community\n\t5.Display the number of comunities based on their community type\n\t6.Show if there is a community without school and a hospital \n\t9. Leave menu");
+		System.out.println("\t1. Register a community\n\t2. Register a place\n\t3. Add a product to a community\n\t4. Delete a product from a community\n\t5. Display the number of comunities based on their community type\n\t6. Show if there is a community without school and a hospital \n\t9. Leave menu");
 		System.out.println("-----------------------------------------------------------");
 		System.out.print("Enter the option: ");
 		option = sk.nextInt();
@@ -234,7 +234,7 @@ public class Main{
 	*
 	* @param controller The general controller of the application. 
 	*/    
-    public static void registerCommunity(Controller controller){
+    public static void registerCommunity(){
         System.out.println("REGISTERING A COMMUNITY");
         
         System.out.print("Enter the community's name: ");
@@ -293,7 +293,7 @@ public class Main{
 	*
 	* @param controller The general controller of the application. 
 	*/        
-    public static void registerPlace(Controller controller){
+    public static void registerPlace(){
         System.out.println("REGISTERING A PLACE");
         
         boolean existingCommunity = controller.oneMinCommunity();
@@ -377,7 +377,7 @@ public class Main{
 	*
 	* @param controller The general controller of the application. 
 	*/  
-    public static void addProduct(Controller controller){
+    public static void addProduct(){
         System.out.println("REGISTERING A PLACE");
 
         boolean existingCommunity = controller.oneMinCommunity();
@@ -438,7 +438,7 @@ public class Main{
     * 
     * @param controller The general controller of the application. 
     */
-    public static void deleteProduct(Controller controller){
+    public static void deleteProduct(){
         System.out.println("DELETING A PRODUCT");
 
         boolean existingCommunity = controller.oneMinCommunity();
@@ -471,16 +471,33 @@ public class Main{
 
     }
 
-    public static void displayCommunityTypeCount(Controller controller){
+    public static void displayCommunityTypeCount(){
         System.out.println("DISPLAYING NUMBER OF COMMUNITIES BASED ON THEIR COMMUNITY TYPE:");
 
-        System.out.println(controller.displayCommunityTypes());
-        System.out.print("Enter the type of community: ");
-        int intType = sk.nextInt();
-        sk.nextLine();
+        boolean existingCommunity = controller.oneMinCommunity();
 
-        String message = controller.displayCommunityTypeCount(intType);
-        System.out.println(message);
+        if (existingCommunity){
+            System.out.println(controller.displayCommunityTypes());
+            System.out.print("Enter the type of community: ");
+            int intType = sk.nextInt();
+            sk.nextLine();
+    
+            String message = controller.displayCommunityTypeCount(intType);
+            System.out.println(message);
+        } else {
+            System.out.println("There are no registered communities to check their type. Please enter one.");
+        }
+    }
+
+    public static void tryNoSchoolHospital(){
+        System.out.println("ARE THERE COMMUNITIES WITHOUT SCHOOL OR HOSPITAL?:");
+        boolean existingCommunity = controller.oneMinCommunity();
+
+        if (existingCommunity){
+            System.out.println(controller.tryNoSchoolHospital());
+        } else {
+            System.out.println("There are no registered communities to check their type. Please enter one.");
+        }
     }
 
 }

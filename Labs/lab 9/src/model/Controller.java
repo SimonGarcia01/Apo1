@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Calendar;
+import java.util.Arrays;
 
 public class Controller {
     
@@ -235,9 +236,46 @@ public class Controller {
 
     //DISPLAY COMMUNITY TYPE COUNT
     public String displayCommunityTypeCount(int intType){
-        return Community.displayCommunityTypeCount();
+        int counter = 0;
+
+        for(Community community: communities){
+            if (community != null && intType == community.communityTypeToInt()){
+                counter++;
+            }
+        }
+
+        String message = "There are " + counter + " registered communities that face that challenge.";
+
+        return message;
     }
 
+    //CHECK IF THERE ARE COMMUNITIES WITHOUT SCHOOL AND HOSPITAL
+    public String tryNoSchoolHospital(){
+        String message = "Answer: No";
+        int[] intChallenges =new int[4];
+        boolean hospitals = false;
+        boolean schools = false;
+
+        for(Community community : communities){
+            if(community != null){
+                intChallenges = Arrays.copyOf(community.challengesToInt(), 4);
+
+                for(int num : intChallenges){
+                    if(num == 1){
+                        hospitals = true;
+                    }else if(num == 2){
+                        schools = true;
+                    }
+                }
+
+            }
+        }
+
+        if(hospitals&&schools){
+            message = "Answer: Yes";
+        }
+        return message;
+    }
 
     //SEARCH METHODS
 

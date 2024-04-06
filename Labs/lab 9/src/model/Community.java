@@ -62,15 +62,22 @@ public class Community {
 
 
     //DISPLAY COMMUNITY TYPE COUNT
-    public static String displayCommunityTypeCount(){
-        String message = "";
-
-        
-
-        return message;
+    public int communityTypeToInt(){
+        return CommunityType.communityTypeToInt(type);
     }
 
-    //CHANGE AN INT TO A COMMUNITY
+    //CHANGE A CHALLENGE LITERAL TO AN INT
+    public int[] challengesToInt(){
+        int[] intChallenges = new int[4];
+
+        for(int i = 0; i < challenges.length; i++){
+            intChallenges[i] = Challenge.challengeToInt(challenges[i]);
+        }
+        
+        return intChallenges;
+    }
+
+
     /**
     * <p><b>deleteProduct</b></p>
     * <b>Description:</b> Deletes a product from the community based on the specified product index.
