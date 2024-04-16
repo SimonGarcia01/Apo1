@@ -4,17 +4,18 @@ public class Professor {
     //Attributes
     private String firstName;
     private String lastName;
+    private String id;
     private double baseSalary;
     private double totalSalary;
 
     //Methods
 
     //CONSTRUCTOR
-    public Professor(String firstName, String lastName, double baseSalary, double totalSalary) {
+    public Professor(String firstName, String lastName, String id, double baseSalary) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.id = id;
         this.baseSalary = baseSalary;
-        this.totalSalary = totalSalary;
     }
 
     //GETTERS AND SETTERS
@@ -32,6 +33,14 @@ public class Professor {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public double getBaseSalary() {

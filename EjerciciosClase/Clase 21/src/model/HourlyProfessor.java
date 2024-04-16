@@ -5,12 +5,18 @@ public class HourlyProfessor extends Professor{
     private int workedHours;
 
     //Methods
+    
+    //Calculate total salary
+    public double calcTotalSalary(double baseSalary, int workedHours){
+        return baseSalary + (workedHours*40000);
+    }
 
     //CONSTRUCTOR
-    public HourlyProfessor(String firstName, String lastName, double baseSalary, 
-    double totalSalary, int workedHours){
-        super(firstName, lastName, baseSalary, totalSalary);
+    public HourlyProfessor(String firstName, String lastName, String id, double baseSalary,  int workedHours){
+        super(firstName, lastName, id, baseSalary);
+        
         this.workedHours = workedHours;
+        setTotalSalary(calcTotalSalary(baseSalary, workedHours));
     }
 
     //GETTERS AND SETTERS

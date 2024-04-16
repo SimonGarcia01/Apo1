@@ -3,17 +3,23 @@ package model;
 public class FullTimeProfessor extends Professor {
     //Attributes
     private double bonus;
-    private int extraHours;
+    private double extraHours;
 
     //Methods
 
-    //CONSTRUCTOR
-    public FullTimeProfessor(String firstName, String lastName, double baseSalary, 
-    double totalSalary, double bonus, int extraHours){
-        super(firstName, lastName, baseSalary, totalSalary);
+    //Calculate the total salary
+    public double calcTotalSalary(double baseSalary, double bonus, int extraHours){
+        return baseSalary + bonus + (extraHours*60000);
+    }
 
+    //CONSTRUCTOR
+    public FullTimeProfessor(String firstName, String lastName, String id, double baseSalary, double bonus, 
+    int extraHours){
+        super(firstName, lastName, id, baseSalary);
+        
         this.bonus = bonus;
         this. extraHours = extraHours;
+        setTotalSalary(calcTotalSalary(baseSalary, bonus, extraHours));
     }
 
     //GETTERS AND SETTERS
@@ -25,7 +31,7 @@ public class FullTimeProfessor extends Professor {
         this.bonus = bonus;
     }
 
-    public int getExtraHours() {
+    public double getExtraHours() {
         return extraHours;
     }
 
