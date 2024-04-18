@@ -42,6 +42,7 @@ public class HourlyProfessor extends Professor{
     *   <li>{@code lastName} must be a String.</li>
     *   <li>{@code id} must be a String.</li>
     *   <li>{@code baseSalary} must be a double.</li>
+    *   <li>{@code totalSalary} must be a double.</li>
     *   <li>{@code workedHours} must be an int.</li>
     * </ul>
     * 
@@ -56,6 +57,7 @@ public class HourlyProfessor extends Professor{
     * @param lastName The last name of the hourly professor.
     * @param id The ID of the hourly professor.
     * @param baseSalary The base salary of the hourly professor.
+    * @param totalSalary The total salary of the general professor. 
     * @param workedHours The number of hours worked by the hourly professor.
     */
     public HourlyProfessor(String firstName, String lastName, String id, double baseSalary,  double totalSalary, int workedHours){

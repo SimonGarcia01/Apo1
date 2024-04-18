@@ -45,6 +45,7 @@ public class FullTimeProfessor extends Professor {
     *   <li>{@code lastName} must be a String.</li>
     *   <li>{@code id} must be a String.</li>
     *   <li>{@code baseSalary} must be a double.</li>
+    *   <li>{@code totalSalary} must be a double.</li>
     *   <li>{@code bonus} must be a double.</li>
     *   <li>{@code extraHours} must be an int.</li>
     * </ul>
@@ -60,6 +61,7 @@ public class FullTimeProfessor extends Professor {
     * @param lastName The last name of the full-time professor.
     * @param id The ID of the full-time professor.
     * @param baseSalary The base salary of the full-time professor.
+    * @param totalSalary The total salary of the general professor.
     * @param bonus The bonus amount for the full-time professor.
     * @param extraHours The number of extra hours worked by the full-time professor.
     */

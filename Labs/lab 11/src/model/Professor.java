@@ -22,17 +22,19 @@ public class Professor {
     *   <li>{@code lastName} must be a String. </li>
     *   <li>{@code id} must be a String. </li>
     *   <li>{@code baseSalary} must be a String. </li>
+    *   <li>{@code totalSalary} must be a double. </li>
     * </ul>
     * 
     * <p><b>Postconditions:</b></p>
     * <ul>
-    *   <li>A new Professor object is created with the specified first name, last name, ID, and base salary.</li>
+    *   <li>A new Professor object is created with the specified first name, last name, ID, base salary and total Salary.</li>
     * </ul>
     * 
     * @param firstName The first name of the professor.
     * @param lastName The last name of the professor.
     * @param id The ID of the professor.
     * @param baseSalary The base salary of the professor.
+    * @param totalSalary The total salary of a professor.
     */
     public Professor(String firstName, String lastName, String id, double baseSalary, double totalSalary) {
         this.firstName = firstName;

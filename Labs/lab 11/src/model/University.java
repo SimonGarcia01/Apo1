@@ -14,7 +14,7 @@ public class University {
     * If there is a duplicate professor, it returns a message indicating that the professor has already been registered.
     * If there is no duplicate, it checks for available space to register a new professor using the {@link #availableProf()} method.
     * If there is no available space, it returns a message indicating that no more professors can be registered.
-    * If space is available, it creates a new instance of the appropriate type of professor (full-time or hourly) based on the provided type and initializes it with the provided information.
+    * If space is available, it creates a new instance of the appropriate type of professor (full-time, adjunct or general) based on the provided type and initializes it with the provided information.
     * The newly created professor is then added to the array of professors.
     * 
     * <p><b>Preconditions:</b></p>
@@ -34,6 +34,7 @@ public class University {
     * @param lastName The last name of the professor.
     * @param id The ID of the professor.
     * @param baseSalary The base salary of the professor.
+    * @param totalSalary The total salary (applicable for general professors only)
     * @param bonus The bonus (applicable for full-time professors only).
     * @param extraHours The extra hours (applicable for full-time professors only).
     * @param workedHours The worked hours (applicable for hourly professors only).
