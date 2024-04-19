@@ -2,7 +2,11 @@ package model;
 
 public class University {
     //Attributes
+    private String name;
     private Professor[] professors;
+
+    //Constants
+    public final int MAX_PROF = 50;
 
     //Methods
     
@@ -44,7 +48,7 @@ public class University {
     double totalSalary, double bonus, int extraHours, int workedHours){
         String message = "";
 
-        boolean duplicate = searchProf(firstName, lastName);
+        boolean duplicate = searchProf(id);
 
         if(!duplicate){
             int space = availableProf();
@@ -71,6 +75,52 @@ public class University {
         return message;
     }
 
+    //Add project
+    public String addProject(int intProf, int intRole, String projectName, double investment){
+        Professor professor = intToProf(intProf);
+        return professor.addProject(intRole, projectName, investment);
+    }
+    
+    //investMaxProject
+    public String maxInvestProject(){
+        String projectName = "";
+        double maxInvestment = 0;
+
+        for(Professor professor : professors){
+            if(professor!=null){
+                for(Project project : professor.getProjects()){
+                    if(project != null && project.getInvestment() >= maxInvestment){
+                        projectName = project.getName();
+                    }
+                }
+            }
+        }
+
+        return projectName;
+    }
+
+    public String displayOverseerProfessors(){
+        String message = "List of professors that are overseers: ";
+        String[] profNames = new String[MAX_PROF];
+        int profCounter = 0;
+
+        for(Professor professor : professors) {
+            if(professor != null){
+                boolean isOverseer = false;
+
+                for(Project project : professor.getProjects()){
+                    if(project.getRole() == Role.valueOf("OVERSEER")) {
+                        isOverseer = true;
+                        profCounter++;
+                    }
+                }
+                message += "\n\t" + profCounter + ". " + professor.getFirstName() + " " + professor.getLastName();
+            }
+        }
+
+        return message;
+    }
+
     //SEARCH METHODS
     /**
     * <p><b>searchProf</b></p>
@@ -92,11 +142,11 @@ public class University {
     * @param lastName The last name of the professor to search for.
     * @return {@code boolean} informing if a professor with the specified first and last name exists.
     */
-    public boolean searchProf(String firstName, String lastName){
+    public boolean searchProf(String id){
         boolean existProfessor = false;
         
         for(Professor professor : professors){
-            if(professor != null && professor.getFirstName().equals(firstName) && professor.getLastName().equals(lastName)){
+            if(professor != null && professor.getId().equals(id)){
                 existProfessor = true;
             }
         }
@@ -104,6 +154,35 @@ public class University {
         return existProfessor;
     }
 
+    //One minimum professor
+    public boolean oneMinProf(){
+        boolean oneProf = false;
+
+        if(professors[0] != null){
+            oneProf = true;
+        }
+
+        return oneProf;
+    }
+
+    //oneMinProject
+    public boolean oneMinProject(){
+        boolean oneProject = false;
+
+        for(Professor professor : professors){
+            if(professor != null && professor.getProjects()[0]!=null){
+                oneProject = true;
+            }
+        }
+
+        return oneProject;
+    }
+
+    //intToProfessor
+    public Professor intToProf(int intProf){
+        Professor professor = professors[intProf-1];
+        return professor;
+    }   
 
     //AVAILABLE SPACE METHODS
     /**
@@ -134,6 +213,29 @@ public class University {
         return -1;
     }
 
+    //DISPLAY METHODS
+    public String displayRoles(){
+        String message = "Available roles: ";
+
+        String[] roles = Professor.getRoles();
+        
+        for(int n = 0; n < roles.length; n++){
+            message +="\n\t" + (n+1) + ". " + roles[n];
+        }
+
+        return message;
+    }
+
+    public String displayProfessors(){
+        String message = "Registered professors: \n";
+        for(int i = 0; i < professors.length; i++){
+            if(professors[i]!=null){
+                message += "\t"+(i+1) + ". " + professors[i].getFirstName() + " " + professors[i].getLastName() + "\n";
+            }
+        }
+        return message;
+    }
+
     //CONSTRUCTOR
 
     /**
@@ -151,8 +253,9 @@ public class University {
     *   <li>A new University object is created with an array of professors initialized to a size of 50.</li>
     * </ul>
     */
-    public University(){
-        this.professors = new Professor[50];
+    public University(String name){
+        this.name = name;
+        this.professors = new Professor[MAX_PROF];
     }
 
     //SETTERS AND GETTERS
@@ -176,4 +279,13 @@ public class University {
     public Professor[] getProfessors() {
         return professors;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }

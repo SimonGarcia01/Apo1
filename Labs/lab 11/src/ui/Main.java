@@ -24,7 +24,7 @@ public class Main{
     * </ul>
     */
     public Main(){
-        controller = new University();
+        controller = new University("Random University in the SouthWest.");
         sk = new Scanner(System.in);
     }
 
@@ -43,8 +43,21 @@ public class Main{
                     objMain.registerProfessor();
                     break;
                 case 2:
+                    //Add a project to a professor
+                    objMain.addProject();
+                    break;
+                case 3:
+                    //Display the name of the project with the largest investment
+                    objMain.maxInvestProject();
+                    break;
+                case 4:
+                    //Display the names of the profesores which role is an overseer for atleast one project.
+                    objMain.displayOverseerProfessors();
+                    break;
+                case 5:
                     //To end the program
                     menuLoop = false;
+                    break;
                 default:
                     System.out.println("Select one of the available choices.");
                     break;
@@ -81,7 +94,7 @@ public class Main{
     public int menu(){
         System.out.println("------------------------------------------------------------------------------------------");
         System.out.println("General menu:");
-        System.out.println("\t1. Register a professor\n\t2. Exit Program");
+        System.out.println("\t1. Register a professor\n\t2. Add a project to a professor\n\t3. Display the name of the project with the largest investment\n\t4. Display the names of the profesores which role is an overseer for atleast one project\n\t5. Exit Program");
         System.out.println("------------------------------------------------------------------------------------------");
         System.out.print("Enter the option: ");
         int option = sk.nextInt();
@@ -173,4 +186,54 @@ public class Main{
         System.out.println(message);
     }
 
+    public void addProject(){
+        System.out.println("REGISTERING A PROJECT TO A PROFESSOR");
+
+        String message = "";
+
+        if(controller.oneMinProf()) {
+
+            System.out.println(controller.displayProfessors());
+            System.out.print("Enter one of the registered professors(as a number): ");
+            int intProf = sk.nextInt();
+            sk.nextLine();
+
+            System.out.println(controller.displayRoles());
+            System.out.print("Enter one role (as a number): ");
+            int intRole = sk.nextInt();
+            sk.nextLine();
+    
+            System.out.print("Enter the project's name: ");
+            String projectName = sk.nextLine();
+    
+            System.out.print("Enter the invesment done on the project: ");
+            double investment = sk.nextDouble();
+            sk.nextLine();
+
+            message = controller.addProject(intProf, intRole, projectName, investment);
+
+        } else {
+            message = "There are no registered professors. Please enter one.";
+        }
+
+        System.out.println(message);
+    }
+
+    public void maxInvestProject(){
+        System.out.println("DISPLAYING THE PROJECT WITH THE BIGGEST INVESTMENT");
+        String message = "";
+
+        if(controller.oneMinProject()){
+            message = "The project with the maximum investment was: " + controller.maxInvestProject();
+        } else {
+            message = "At least one project has to be registered.";
+        }
+
+        System.out.println(message);
+    }
+
+    public void displayOverseerProfessors(){
+        System.out.println("DISPLAYING THE NAME OF THE PROFESSORS THAT ARE OVERSEERS");
+        System.out.println(controller.displayOverseerProfessors());
+    }
 }

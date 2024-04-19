@@ -8,7 +8,66 @@ public class Professor {
     private double baseSalary;
     private double totalSalary;
 
+    //Constants
+    public final int MAX_PROJ = 30;
+
+    //Relations
+    private Project[] projects;
+
     //Methods
+    
+    //addProject
+    public String addProject(int intRole, String name, double investment){
+        String message = "";
+
+        Project project = searchProject(name);
+
+        if(project != null){
+            message = "A project with that name already exists. Please enter other one.";
+        } else {
+
+            int space = availableProject();
+
+            if (space == -1){
+                message = "There is no more space to register a new project to the professor.";
+            } else {
+                projects[space] = new Project(intRole, name, investment);
+                message = "The product has been added successfully to the community's inventory.";
+            }
+
+        }
+
+        return message;
+    }
+
+    //searchProject
+    public Project searchProject(String name){
+        Project searchedProject = null;
+
+        for(Project project : projects){
+            if(project != null && project.getName().equals(name)){
+                searchedProject = project;
+            }
+        }
+
+        return searchedProject;
+    }
+
+    //Available space for project
+    public int availableProject(){
+        for(int n = 0; n < projects.length; n++) {
+            if(projects[n] == null) {
+                return n;
+            }
+        }
+
+        return -1;
+    }
+
+    //getRoles
+    public static String[] getRoles(){
+        return Project.getRoles();
+    }
 
     //CONSTRUCTOR
     /**
@@ -42,6 +101,12 @@ public class Professor {
         this.id = id;
         this.baseSalary = baseSalary;
         this.totalSalary = totalSalary;
+        this.projects = new Project[MAX_PROJ];
+    }
+
+    //toString
+    public String toString(){
+        return String.format("First Name: %s\nID: %s\nLast Name: %s", firstName, id, lastName);
     }
 
     //GETTERS AND SETTERS
@@ -248,4 +313,9 @@ public class Professor {
     public void setTotalSalary(double totalSalary) {
         this.totalSalary = totalSalary;
     }
+
+    public Project[] getProjects() {
+        return projects;
+    }
+
 }
