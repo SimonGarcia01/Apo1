@@ -32,7 +32,7 @@ public class Professor {
                 message = "There is no more space to register a new project to the professor.";
             } else {
                 projects[space] = new Project(intRole, name, investment);
-                message = "The product has been added successfully to the community's inventory.";
+                message = "The project has been associated to the professor successfully.";
             }
 
         }

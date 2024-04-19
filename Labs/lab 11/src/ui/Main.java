@@ -57,6 +57,7 @@ public class Main{
                 case 5:
                     //To end the program
                     menuLoop = false;
+                    System.out.println("EXITING PROGRAM.");
                     break;
                 default:
                     System.out.println("Select one of the available choices.");
@@ -206,7 +207,7 @@ public class Main{
             System.out.print("Enter the project's name: ");
             String projectName = sk.nextLine();
     
-            System.out.print("Enter the invesment done on the project: ");
+            System.out.print("Enter the investment done on the project: ");
             double investment = sk.nextDouble();
             sk.nextLine();
 
@@ -234,6 +235,22 @@ public class Main{
 
     public void displayOverseerProfessors(){
         System.out.println("DISPLAYING THE NAME OF THE PROFESSORS THAT ARE OVERSEERS");
-        System.out.println(controller.displayOverseerProfessors());
+
+        String message = "";
+        String[] overseeingProf = controller.displayOverseerProfessors();
+
+        if(overseeingProf[0]!=null){
+            message = "List of professors that are overseers: ";
+
+            for(int n = 0; n < overseeingProf.length; n++){
+                if(overseeingProf[n] != null){
+                    message += "\n\t" + (n+1) + ". " + overseeingProf[n];
+                }
+            }
+        } else {
+            message  = "There are no professors who have a role as overseers.";
+        }
+
+        System.out.println(message);
     }
 }

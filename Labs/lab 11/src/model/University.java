@@ -99,8 +99,7 @@ public class University {
         return projectName;
     }
 
-    public String displayOverseerProfessors(){
-        String message = "List of professors that are overseers: ";
+    public String[] displayOverseerProfessors(){
         String[] profNames = new String[MAX_PROF];
         int profCounter = 0;
 
@@ -109,16 +108,18 @@ public class University {
                 boolean isOverseer = false;
 
                 for(Project project : professor.getProjects()){
-                    if(project.getRole() == Role.valueOf("OVERSEER")) {
+                    if(project != null && project.getRole() == Role.valueOf("OVERSEER")) {
                         isOverseer = true;
-                        profCounter++;
                     }
                 }
-                message += "\n\t" + profCounter + ". " + professor.getFirstName() + " " + professor.getLastName();
+                if(isOverseer){
+                    profNames[profCounter] = professor.getFirstName() + " " + professor.getLastName();
+                    profCounter++;
+                }
             }
         }
 
-        return message;
+        return profNames;
     }
 
     //SEARCH METHODS
