@@ -1,6 +1,6 @@
 package model;
 
-public class Professor {
+public abstract class Professor {
     //Attributes
     private String firstName;
     private String lastName;
@@ -9,6 +9,8 @@ public class Professor {
     private double totalSalary;
 
     //Methods
+
+    public abstract double calcTotalSalary();
 
     //CONSTRUCTOR
     /**

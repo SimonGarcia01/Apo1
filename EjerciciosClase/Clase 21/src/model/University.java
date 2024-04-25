@@ -39,8 +39,8 @@ public class University {
     * @param workedHours The worked hours (applicable for hourly professors only).
     * @return A message indicating the success or failure of the registration.
     */
-    public String registerProfessor(int intProfType, String firstName, String lastName, String id, double baseSalary, 
-    double bonus, int extraHours, int workedHours){
+    public String registerProfessor(String firstName, String lastName, String id, double baseSalary, 
+    double bonus, int extraHours){
         String message = "";
 
         boolean duplicate = searchProf(firstName, lastName);
@@ -49,12 +49,31 @@ public class University {
             int space = availableProf();
 
             if(space != -1){
-                if(intProfType == 1){
-                    professors[space] = new FullTimeProfessor(firstName, lastName, id, baseSalary, bonus, extraHours);
-                } else {
-                    professors[space] = new HourlyProfessor(firstName, lastName, id, baseSalary, workedHours);
-                }
+                professors[space] = new FullTimeProfessor(firstName, lastName, id, baseSalary, 
+                bonus, extraHours);
+                message = "The full time professor has been successfully registered.";
+            } else {
+                message = "There is no more space to register a professor. Try Later.";
+            }
+        } else {
+            message = "The entered professor has already been registered. Please enter other one.";
+        }
 
+        return message;
+    }
+
+    public String registerProfessor(String firstName, String lastName, String id, double baseSalary, 
+    int workedHours){
+        String message = "";
+
+        boolean duplicate = searchProf(firstName, lastName);
+
+        if(!duplicate){
+            int space = availableProf();
+
+            if(space != -1){
+                professors[space] = new HourlyProfessor(firstName, lastName, id, baseSalary, workedHours);
+                message = "The adjunct professor has been successfully registered.";
             } else {
                 message = "There is no more space to register a professor. Try Later.";
             }

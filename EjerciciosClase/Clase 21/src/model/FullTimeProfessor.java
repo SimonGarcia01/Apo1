@@ -1,6 +1,9 @@
 package model;
 
 public class FullTimeProfessor extends Professor {
+    //Constants
+    public static final double EXTRA_HOUR_WAGE = 60000;
+    
     //Attributes
     private double bonus;
     private double extraHours;
@@ -29,8 +32,8 @@ public class FullTimeProfessor extends Professor {
     * @param extraHours The number of extra hours worked by the full-time professor.
     * @return The total salary of the full-time professor.
     */
-    public double calcTotalSalary(double baseSalary, double bonus, int extraHours){
-        return baseSalary + bonus + (extraHours*60000);
+    public double calcTotalSalary(){
+        return super.getBaseSalary() + bonus + (extraHours*EXTRA_HOUR_WAGE);
     }
 
     //CONSTRUCTOR
@@ -69,7 +72,7 @@ public class FullTimeProfessor extends Professor {
         
         this.bonus = bonus;
         this. extraHours = extraHours;
-        setTotalSalary(calcTotalSalary(baseSalary, bonus, extraHours));
+        super.setTotalSalary(calcTotalSalary());
     }
 
     //GETTERS AND SETTERS

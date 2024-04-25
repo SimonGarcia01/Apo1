@@ -127,9 +127,6 @@ public class Main{
         String lastName = "";
         String id = "";
         double baseSalary = 0;
-        double bonus = 0;
-        int extraHours = 0;
-        int workedHours = 0;
 
         if(intProfType == 1 || intProfType == 2){
             System.out.print("Enter the first name: ");
@@ -147,19 +144,23 @@ public class Main{
 
             if(intProfType == 1){
                 System.out.print("Enter the bonus: ");
-                bonus = sk.nextDouble();
+                double bonus = sk.nextDouble();
                 sk.nextLine();
     
                 System.out.print("Enter the amount of extra hours: ");
-                extraHours = sk.nextInt();
+                int extraHours = sk.nextInt();
                 sk.nextLine();
+
+                message = controller.registerProfessor(firstName, lastName, id, baseSalary, bonus, 
+                extraHours);
+                
             } else {
                 System.out.print("Enter the amount of worked hours: ");
-                workedHours = sk.nextInt();
+                int workedHours = sk.nextInt();
                 sk.nextLine();
+
+                message = controller.registerProfessor(firstName, lastName, id, baseSalary, workedHours);
             }
-            message = controller.registerProfessor(intProfType, firstName, lastName, id, baseSalary, bonus, 
-            extraHours, workedHours);
 
         } else {
             message = "Please select one of the provided options.";
