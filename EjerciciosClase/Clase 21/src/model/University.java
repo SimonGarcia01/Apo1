@@ -128,6 +128,36 @@ public class University {
         return message;
     }
 
+    //Display the total salary of all professors
+    public String displaySalaryAllProf(){
+        String message = "";
+        if(professors[0] != null){
+            message = "All the registered salaries: ";
+            for(Professor professor : professors){
+                if(professor != null) {
+                    message += "\n\tFull Name: " + professor.getFirstName() + " " + professor.getLastName() + " - Total Salary: $ " + professor.getTotalSalary();
+                }
+            }
+        } else {
+            message = "There are no registered professors.";
+        }
+
+        return message;
+    }
+
+    //Display the full time professors that have a salary greater than 2 million
+    public int fullTimeGreater2Mil(){
+        int counter = 0;
+
+        for(Professor professor : professors){
+            if(professor != null && professor instanceof FullTimeProfessor && professor.getTotalSalary()>=2000000) {
+                counter++;
+            }
+        }
+
+        return counter;
+    }
+
     //SEARCH METHODS
     /**
     * <p><b>searchProf</b></p>

@@ -48,11 +48,11 @@ public class Main{
                     break;
                 case 3:
                     //Display the total salary of all professors\
-                    objMain.registerProfessor();
+                    objMain.displaySalaryAllProf();
                     break;
                 case 4:
                     //Display amount of full-time professors with a salary greater than $2,000,000
-                    objMain.registerProfessor();
+                    objMain.fullTimeGreater2Mil();
                     break;
                 case 5:
                     //To end the program
@@ -186,5 +186,15 @@ public class Main{
     public void displayAllProfessors(){
         System.out.println("DISPLAYING INFORMATION OF ALL PROFESSORS");
         System.out.println(controller.displayAllProfessors());
+    }
+
+    public void displaySalaryAllProf(){
+        System.out.println("DISPLAYING THE SALARY OF ALL PROFESSORS:");
+        System.out.println(controller.displaySalaryAllProf());
+    }
+
+    public void fullTimeGreater2Mil(){
+        System.out.println("DISPLAYING THE SALARY OF ALL PROFESSORS WITH A GREATER SALARY THAN 2 MILLION:");
+        System.out.println("Number of full-time professors with a salary greater than 2 million: " + controller.fullTimeGreater2Mil());
     }
 }

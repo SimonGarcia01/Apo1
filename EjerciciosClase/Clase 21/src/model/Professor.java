@@ -14,7 +14,7 @@ public abstract class Professor {
 
     //TOSTRING
     public String toString(){
-        return String.format("\n\tName: %s\n\tLast Name: %s\n\tID: %s\n\tBase Salary: $%.1f\n\tTotal Salary: $%.1f",
+        return String.format("\n\tFirst Name: %s\n\tLast Name: %s\n\tID: %s\n\tBase Salary: $%.1f\n\tTotal Salary: $%.1f",
         getFirstName(), getLastName(), getId(), getBaseSalary(), getTotalSalary());
     }
 
