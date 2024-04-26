@@ -94,15 +94,15 @@ public class Main{
     * <p><b>registerProfessor</b></p>
     * <b>Description:</b> Registers a professor based on the user's input.
     * This method guides the user through the process of registering a professor by providing options for the type of professor (full-time or adjunct) and collecting relevant information.
-    * Depending on the type of professor the specific additional information will be asked, but both professors have a first and lastname, id and a base salary.
-    * It then calls the {@link  University#registerProfessor(int, String, String, String, double, double, int, int)}method in the controller class to handle the registration process and returns the message indicating the success or failure of the registration.
+    * Depending on the type of professor, specific additional information will be asked, but both professors have a first name, last name, ID, and base salary.
+    * It then calls the {@link University#registerProfessor(String, String, String, double, double, int)} method for a full-time professor or the {@link University#registerProfessor(String, String, String, double, int)} method for an adjunct professor in the controller class to handle the registration process and returns the message indicating the success or failure of the registration.
     * 
     * <p><b>Preconditions:</b></p>
     * <ul>
-    *   <li>intProfesorType must be an int.</li>
-    *   <li>The first and lastname and the id must be a String.</li>
+    *   <li>{@code intProfType} must be an int.</li>
+    *   <li>The first name, last name, and ID must be a String.</li>
     *   <li>The base salary must be a double.</li>
-    *   <li>In case of registering a full time professor:  the bonus must be a double and the extra hours an int.</li>
+    *   <li>In case of registering a full-time professor: the bonus must be a double and the extra hours an int.</li>
     *   <li>In case of registering an adjunct professor: the worked hours must be an int.</li>
     *   <li>The scanner object {@code sk} must be initialized.</li>
     *   <li>The University object {@code controller} must be initialized.</li>

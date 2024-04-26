@@ -15,7 +15,7 @@ public abstract class Professor {
     //CONSTRUCTOR
     /**
     * <p><b>Professor</b></p>
-    * <b>Description:</b> Constructs a new Professor object with the provided information.
+    * <b>Description:</b> Constructs a new Professor object with the provided information (it's an abstract class so it can't be instanciated).
     * This constructor initializes a new Professor object with the specified first name, last name, ID, and base salary.
     * 
     * <p><b>Preconditions:</b></p>
@@ -29,6 +29,7 @@ public abstract class Professor {
     * <p><b>Postconditions:</b></p>
     * <ul>
     *   <li>A new Professor object is created with the specified first name, last name, ID, and base salary.</li>
+    *   <li>This is a constructor for an abstract class, therefore it cannot be directly instantiated.</li>
     * </ul>
     * 
     * @param firstName The first name of the professor.

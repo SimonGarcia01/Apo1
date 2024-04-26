@@ -13,7 +13,7 @@ public class HourlyProfessor extends Professor{
     /**
     * <p><b>calcTotalSalary</b></p>
     * <b>Description:</b> Calculates the total salary of the hourly professor based on the base salary and the number of worked hours.
-    * 
+    * The base salary is accessed using {@link Professor#getBaseSalary()}
     * <p><b>Preconditions:</b></p>
     * <ul>
     *   <li>{@code baseSalary} must be a double.</li>
@@ -25,8 +25,6 @@ public class HourlyProfessor extends Professor{
     *   <li>The total salary of the hourly professor is calculated and returned.</li>
     * </ul>
     * 
-    * @param baseSalary The base salary of the hourly professor.
-    * @param workedHours The number of hours worked by the hourly professor.
     * @return The total salary of the hourly professor.
  */
     public double calcTotalSalary(){
@@ -51,7 +49,7 @@ public class HourlyProfessor extends Professor{
     * <p><b>Postconditions:</b></p>
     * <ul>
     *   <li>A new HourlyProfessor object is created with the specified first name, last name, ID, base salary, and worked hours.</li>
-    *   <li>The total salary of the hourly professor is calculated based on the provided base salary and worked hours, using the {@link #calcTotalSalary(double, int)} method.</li>
+    *   <li>The total salary of the hourly professor is calculated based on the provided base salary and worked hours, using the {@link #calcTotalSalary()} method.</li>
     *   <li>The total salary of the hourly professor is set using {@link Professor#setTotalSalary(double)} method from the superclass.</li>
     * </ul>
     * 

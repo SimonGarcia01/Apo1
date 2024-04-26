@@ -14,7 +14,8 @@ public class FullTimeProfessor extends Professor {
     /**
     * <p><b>calcTotalSalary</b></p>
     * <b>Description:</b> Calculates the total salary of the full-time professor based on the base salary, bonus, and extra hours worked.
-    * 
+    * The base salary is accessed using {@link Professor#getBaseSalary()} 
+    *
     * <p><b>Preconditions:</b></p>
     * <ul>
     *   <li>{@code baseSalary} must be a double.</li>
@@ -27,9 +28,6 @@ public class FullTimeProfessor extends Professor {
     *   <li>The total salary of the full-time professor is calculated and returned.</li>
     * </ul>
     * 
-    * @param baseSalary The base salary of the full-time professor.
-    * @param bonus The bonus amount for the full-time professor.
-    * @param extraHours The number of extra hours worked by the full-time professor.
     * @return The total salary of the full-time professor.
     */
     public double calcTotalSalary(){
@@ -55,7 +53,7 @@ public class FullTimeProfessor extends Professor {
     * <p><b>Postconditions:</b></p>
     * <ul>
     *   <li>A new FullTimeProfessor object is created with the specified first name, last name, ID, base salary, bonus, and extra hours.</li>
-    *   <li>The total salary of the full-time professor is calculated based on the provided base salary, bonus, and extra hours, using the {@link #calcTotalSalary(double, double, int)} method.</li>
+    *   <li>The total salary of the full-time professor is calculated based on the provided base salary, bonus, and extra hours, using the {@link #calcTotalSalary()} method.</li>
     *   <li>The total salary of the full-time professor is set using {@link Professor#setTotalSalary(double)} method from the superclass.</li>
     * </ul>
     * 

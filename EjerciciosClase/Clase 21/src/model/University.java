@@ -6,37 +6,34 @@ public class University {
 
     //Methods
     
-    //Register a professor
+    //Register a full time professor
     /**
     * <p><b>registerProfessor</b></p>
-    * <b>Description:</b> Registers a professor based on the provided information.
+    * <b>Description:</b> Registers a full-time professor based on the provided information.
     * This method checks for duplicate professors with the same first and last name using the {@link #searchProf(String, String)} method.
     * If there is a duplicate professor, it returns a message indicating that the professor has already been registered.
     * If there is no duplicate, it checks for available space to register a new professor using the {@link #availableProf()} method.
     * If there is no available space, it returns a message indicating that no more professors can be registered.
-    * If space is available, it creates a new instance of the appropriate type of professor (full-time or hourly) based on the provided type and initializes it with the provided information.
+    * If space is available, it creates a new instance of the FullTimeProfessor class and initializes it with the provided information.
     * The newly created professor is then added to the array of professors.
     * 
     * <p><b>Preconditions:</b></p>
     * <ul>
-    *   <li> intProfType must be 1 or 2 (as an int)</li>
-    *   <li>{@code professors} array must be initialized.</li>
-    *   <li>Both the {@code searchProf} and {@code availableProf} methods should be in place.</li>
+    *   <li> {@code professors} array must be initialized.</li>
+    *   <li> Both the {@code searchProf} and {@code availableProf} methods should be in place.</li>
     * </ul>
     * 
     * <p><b>Postconditions:</b></p>
     * <ul>
-    *   <li>A professor is registered based on the provided information, and a message indicating the success or failure of the registration is returned.</li>
+    *   <li> A full-time professor is registered based on the provided information, and a message indicating the success or failure of the registration is returned.</li>
     * </ul>
     * 
-    * @param intProfType The type of professor (1 for full-time, 2 for hourly).
     * @param firstName The first name of the professor.
     * @param lastName The last name of the professor.
     * @param id The ID of the professor.
     * @param baseSalary The base salary of the professor.
-    * @param bonus The bonus (applicable for full-time professors only).
-    * @param extraHours The extra hours (applicable for full-time professors only).
-    * @param workedHours The worked hours (applicable for hourly professors only).
+    * @param bonus The bonus for the full-time professor.
+    * @param extraHours The extra hours for the full-time professor.
     * @return A message indicating the success or failure of the registration.
     */
     public String registerProfessor(String firstName, String lastName, String id, double baseSalary, 
@@ -62,6 +59,35 @@ public class University {
         return message;
     }
 
+    //Register hourly professor
+    /**
+    * <p><b>registerProfessor</b></p>
+    * <b>Description:</b> Registers an hourly (adjunct) professor based on the provided information.
+    * This method checks for duplicate professors with the same first and last name using the {@link #searchProf(String, String)} method.
+    * If there is a duplicate professor, it returns a message indicating that the professor has already been registered.
+    * If there is no duplicate, it checks for available space to register a new professor using the {@link #availableProf()} method.
+    * If there is no available space, it returns a message indicating that no more professors can be registered.
+    * If space is available, it creates a new instance of the HourlyProfessor class and initializes it with the provided information.
+    * The newly created professor is then added to the array of professors.
+    * 
+    * <p><b>Preconditions:</b></p>
+    * <ul>
+    *   <li> {@code professors} array must be initialized.</li>
+    *   <li> Both the {@code searchProf} and {@code availableProf} methods should be in place.</li>
+    * </ul>
+    * 
+    * <p><b>Postconditions:</b></p>
+    * <ul>
+    *   <li> An hourly (adjunct) professor is registered based on the provided information, and a message indicating the success or failure of the registration is returned.</li>
+    * </ul>
+    * 
+    * @param firstName The first name of the professor.
+    * @param lastName The last name of the professor.
+    * @param id The ID of the professor.
+    * @param baseSalary The base salary of the professor.
+    * @param workedHours The worked hours for the hourly (adjunct) professor.
+    * @return A message indicating the success or failure of the registration.
+    */
     public String registerProfessor(String firstName, String lastName, String id, double baseSalary, 
     int workedHours){
         String message = "";
