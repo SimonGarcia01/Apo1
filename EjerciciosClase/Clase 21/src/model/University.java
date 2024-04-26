@@ -111,6 +111,23 @@ public class University {
         return message;
     }
 
+    //Display all professors
+    public String displayAllProfessors(){
+        String message = "";
+        if(professors[0] != null){
+            message = "All registered professors: ";
+            for(Professor professor : professors){
+                if(professor != null) {
+                    message += "\n"+professor.toString();
+                }
+            }
+        } else {
+            message = "There are no registered professors.";
+        }
+
+        return message;
+    }
+
     //SEARCH METHODS
     /**
     * <p><b>searchProf</b></p>

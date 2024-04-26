@@ -8,7 +8,7 @@ public class HourlyProfessor extends Professor{
     private int workedHours;
 
     //Methods
-    
+ 
     //Calculate total salary
     /**
     * <p><b>calcTotalSalary</b></p>
@@ -29,6 +29,12 @@ public class HourlyProfessor extends Professor{
  */
     public double calcTotalSalary(){
         return super.getBaseSalary() + (workedHours*HOURLY_WAGE);
+    }
+
+    //TOSTRING
+    @Override
+    public String toString(){
+        return String.format("%s\n\tWorked Hours: %d",super.toString(), getWorkedHours());
     }
 
     //CONSTRUCTOR

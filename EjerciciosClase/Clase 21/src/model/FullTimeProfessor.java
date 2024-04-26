@@ -6,7 +6,7 @@ public class FullTimeProfessor extends Professor {
     
     //Attributes
     private double bonus;
-    private double extraHours;
+    private int extraHours;
 
     //Methods
 
@@ -32,6 +32,12 @@ public class FullTimeProfessor extends Professor {
     */
     public double calcTotalSalary(){
         return super.getBaseSalary() + bonus + (extraHours*EXTRA_HOUR_WAGE);
+    }
+
+    //TOSTRING
+    @Override
+    public String toString(){
+        return String.format("%s\n\tBonus: $%.1f\n\tWorked Extra Hours: %d",super.toString(),getBonus(),getExtraHours());
     }
 
     //CONSTRUCTOR
@@ -132,7 +138,7 @@ public class FullTimeProfessor extends Professor {
     * 
     * @return The number of extra hours worked by the full-time professor.
     */
-    public double getExtraHours() {
+    public int getExtraHours() {
         return extraHours;
     }
 

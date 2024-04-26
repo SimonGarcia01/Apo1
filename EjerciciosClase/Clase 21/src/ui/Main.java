@@ -43,8 +43,22 @@ public class Main{
                     objMain.registerProfessor();
                     break;
                 case 2:
+                    //Display the info of all professors
+                    objMain.displayAllProfessors();
+                    break;
+                case 3:
+                    //Display the total salary of all professors\
+                    objMain.registerProfessor();
+                    break;
+                case 4:
+                    //Display amount of full-time professors with a salary greater than $2,000,000
+                    objMain.registerProfessor();
+                    break;
+                case 5:
                     //To end the program
                     menuLoop = false;
+                    break;
+                
                 default:
                     System.out.println("Select one of the available choices.");
                     break;
@@ -81,7 +95,7 @@ public class Main{
     public int menu(){
         System.out.println("------------------------------------------------------------------------------------------");
         System.out.println("General menu:");
-        System.out.println("\t1. Register a professor\n\t2. Exit Program");
+        System.out.println("\t1. Register a professor\n\t2. Display the info of all professors\n\t3. Display the total salary of all professors\n\t4. Display amount of full-time professors with a salary greater than $2,000,000\n\t5. Exit Program");
         System.out.println("------------------------------------------------------------------------------------------");
         System.out.print("Enter the option: ");
         int option = sk.nextInt();
@@ -169,4 +183,8 @@ public class Main{
         System.out.println(message);
     }
 
+    public void displayAllProfessors(){
+        System.out.println("DISPLAYING INFORMATION OF ALL PROFESSORS");
+        System.out.println(controller.displayAllProfessors());
+    }
 }
