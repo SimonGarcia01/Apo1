@@ -6,11 +6,15 @@ public class ImprovementCollaborator extends Collaborator implements EfficiencyC
     private int numberLedProjects;
 
     //Relations
-    private Project[] ledProjects;
 
     //Methods
     public double calculateEfficiency(){
-        double efficiency = 0;
+        double efficiency = -1;
+        
+        if(numberLedProjects!=0){
+            efficiency = numberImplementedImprovements/numberLedProjects;
+        }
+
         return efficiency;
     }
 
@@ -22,7 +26,6 @@ public class ImprovementCollaborator extends Collaborator implements EfficiencyC
         
         this.numberImplementedImprovements = numberImplementedImprovements;
         this.numberLedProjects = numberLedProjects;
-        this.ledProjects = new Project[1000];
     }
 
     //GETTERS AND SETTERS
@@ -44,10 +47,4 @@ public class ImprovementCollaborator extends Collaborator implements EfficiencyC
     public void setNumberLedProjects(int numberLedProjects) {
         this.numberLedProjects = numberLedProjects;
     }
-
-
-    public Project[] getLedProjects() {
-        return ledProjects;
-    }
-    
 }
