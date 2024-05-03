@@ -82,7 +82,7 @@ public class RequestManagementApp{
             int numberImplementedImprovements = sk.nextInt();
             sk.nextLine();
 
-            System.out.println("Enter the number of projects the collaborator has led: ");
+            System.out.print("Enter the number of projects the collaborator has led: ");
             int numberLedProjects = sk.nextInt();
             sk.nextLine();
 

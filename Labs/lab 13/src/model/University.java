@@ -17,6 +17,7 @@ public class University {
 
             if(space != -1){
                 collaborators[space] = new ImprovementCollaborator(id, fullName, email, extension, numberImplementedImprovements, numberLedProjects);
+                message = "The DTI collaborator has been registered successfully.";
             } else {
                 message = "There is no more space to register a collaborator.";
             }
@@ -37,6 +38,7 @@ public class University {
 
             if(space != -1){
                 collaborators[space] = new Collaborator(id, fullName, email, extension);
+                message = "The general collaborator has been registered successfully.";
             } else {
                 message = "There is no more space to register a collaborator.";
             }
