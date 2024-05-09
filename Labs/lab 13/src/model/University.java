@@ -1,10 +1,11 @@
 package model;
+import java.util.ArrayList;
 
 public class University {
     //Attributes
 
     //Relations
-    private Collaborator[] collaborators;
+    private ArrayList<Collaborator> collaborators;
 
     //Methods
 
@@ -13,14 +14,9 @@ public class University {
         String message = "";
 
         if(searchCollaborator(id) == null){
-            int space = availableCollaborator();
 
-            if(space != -1){
-                collaborators[space] = new ImprovementCollaborator(id, fullName, email, extension, numberImplementedImprovements, numberLedProjects);
-                message = "The DTI collaborator has been registered successfully.";
-            } else {
-                message = "There is no more space to register a collaborator.";
-            }
+            collaborators.add(new ImprovementCollaborator(id, fullName, email, extension, numberImplementedImprovements, numberLedProjects));
+            message = "The DTI collaborator has been registered successfully.";
 
         }else{
             message = "A collaborator with that Id has already been registered.";
@@ -34,14 +30,9 @@ public class University {
         String message = "";
 
         if(searchCollaborator(id) == null){
-            int space = availableCollaborator();
 
-            if(space != -1){
-                collaborators[space] = new Collaborator(id, fullName, email, extension);
-                message = "The general collaborator has been registered successfully.";
-            } else {
-                message = "There is no more space to register a collaborator.";
-            }
+            collaborators.add(new Collaborator(id, fullName, email, extension));
+            message = "The general collaborator has been registered successfully.";
 
         }else{
             message = "A collaborator with that Id has already been registered.";
@@ -63,27 +54,14 @@ public class University {
         return collaborator;
     }
 
-    //Available position
-    public int availableCollaborator(){
-        int position = -1;
-
-        for(int n = 0; n < collaborators.length; n++){
-            if(collaborators[n]==null){
-                position = n;
-            }
-        }
-
-        return position;
-    }
-
     //CONSTRUCTOR
     public University(){
-        this.collaborators = new Collaborator[1000];
+        this.collaborators = new ArrayList<>();
     }
 
 
     //GETTERS AND SETTERS
-    public Collaborator[] getCollaborators() {
+    public ArrayList<Collaborator> getCollaborators() {
         return collaborators;
     }
     

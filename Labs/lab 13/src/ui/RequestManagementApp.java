@@ -65,7 +65,7 @@ public class RequestManagementApp{
         int intCollabType = sk.nextInt();
         sk.nextLine();
 
-        System.out.print("Enter the collaboratos full name: ");
+        System.out.print("Enter the collaborator's full name: ");
         String fullName = sk.nextLine();
 
         System.out.print("Enter the collaborator's ID: ");
