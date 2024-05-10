@@ -11,6 +11,11 @@ public class Collaborator {
 
     //Methods
     
+    //toString
+    public String toString(){
+        return String.format("\n\tFull Name: %s\n\tID: %s\n\tEmail: %s, \n\tExtension: %s", fullName, id, email, extension);
+    }
+    
     //CONSTRUCTOR
     public Collaborator(String id, String fullName, String email, String extension){
         this.id = id;

@@ -12,10 +12,16 @@ public class ImprovementCollaborator extends Collaborator implements EfficiencyC
         double efficiency = -1;
         
         if(numberLedProjects!=0){
-            efficiency = numberImplementedImprovements/numberLedProjects;
+            efficiency = ((double) numberImplementedImprovements)/numberLedProjects;
         }
 
-        return efficiency;
+        return  efficiency*100;
+    }
+
+    //toString
+    @Override
+    public String toString(){
+        return String.format("%s\n\tNumber of implemented projects: %d\n\tNumber of led projects: %d",super.toString(), numberImplementedImprovements, numberLedProjects);
     }
 
 

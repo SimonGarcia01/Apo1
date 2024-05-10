@@ -31,8 +31,20 @@ public class RequestManagementApp{
                 case 1: //To register a collaborator
                     objMain.registerCollaborator();
                     break;
+                
+                case 2: //Delete a collaborator
+                    objMain.deleteCollaborator();
+                    break;
 
-                case 2: //To end the program
+                case 3: //Consult efficiency of a collaborator
+                    objMain.consultEfficiency();
+                    break;
+
+                case 4: //Display the information of all employees
+                    objMain.displayAllEmployees();
+                    break;
+
+                case 5: //To end the program
                     generalLoop = false;
                     System.out.println("EXITING PROGRAM...");
                     break;
@@ -49,7 +61,7 @@ public class RequestManagementApp{
     //General methods
     public int menu(){
         System.out.println("------------------------------------------------------------------------------------------");
-        System.out.println("General Menu:\n\t1. Register a collaborator\n\t2. Exit Program");
+        System.out.println("General Menu:\n\t1. Register a collaborator\n\t2. Delete a collaborator\n\t3. Consult the efficiency of a collaborator\n\t4. Display the information of all employees.\n\t5. Exit Program");
         System.out.print("Enter one of the options: ");
         int option = sk.nextInt();
         sk.nextLine();
@@ -94,4 +106,47 @@ public class RequestManagementApp{
 
         
     }
+
+    public void deleteCollaborator(){
+        System.out.println("DELETING A COLLABORATOR");
+
+        if(controller.oneMinCollaborator()){
+
+            System.out.println(controller.displayCollaborators());
+            System.out.print("Enter the collaborator you want to remove: ");
+            int intId = sk.nextInt();
+            sk.nextLine();
+
+            System.out.println(controller.deleteCollaborator(intId));
+
+        } else {
+            System.out.println("There must be at least one collaborator to delete one.");
+        }
+        
+    }
+
+    public void consultEfficiency(){
+        System.out.println("CONSULTING EFFICIENCY OF A DTI COLLABORATOR:");
+        if(controller.oneMinDtiCollaborator()){
+            System.out.println(controller.displayDTICollaborators());
+            System.out.print("Enter one of the DTI collaborators: ");
+            int intDtiCollab = sk.nextInt();
+            sk.nextLine();
+
+            System.out.println(controller.consultEfficiency(intDtiCollab));
+
+        } else {
+            System.out.println("There should be at least one DTI collaborator in order to consult the efficiency.");
+        }
+    }
+
+    public void displayAllEmployees(){
+        System.out.println("DISPLAYING THE INFORMATION OF ALL EMPLOYEES:");
+
+        if(controller.oneMinCollaborator()){
+            System.out.println(controller.displayAllEmployees());
+        } else {
+            System.out.println("There must be at least one registered collaborator in order to display its info.");
+        }
+    }    
 }
