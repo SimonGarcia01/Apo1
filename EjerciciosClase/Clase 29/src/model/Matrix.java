@@ -55,8 +55,41 @@ public class Matrix {
     }
 
     //Fill in spiral
-    public void fillSpiral(){
-        
+    public void fillSpiral() {
+        if (ROWS == 0 || COLUMNS == 0) return;
+
+        int num = 1;
+        int top = 0, bottom = ROWS - 1, left = 0, right = COLUMNS - 1;
+
+        while (top <= bottom && left <= right) {
+            // Move right
+            for (int j = left; j <= right; j++) {
+                intMatrix[top][j] = num++;
+            }
+            top++;
+
+            // Move down
+            for (int i = top; i <= bottom; i++) {
+                intMatrix[i][right] = num++;
+            }
+            right--;
+
+            // Move left
+            if (top <= bottom) {
+                for (int j = right; j >= left; j--) {
+                    intMatrix[bottom][j] = num++;
+                }
+                bottom--;
+            }
+
+            // Move up
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    intMatrix[i][left] = num++;
+                }
+                left++;
+            }
+        }
     }
     
     

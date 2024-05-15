@@ -30,6 +30,7 @@ public class Main {
         System.out.println(objMain.intMatrix.toString());
 
         objMain.intMatrix.restart();
+        objMain.intMatrix.fillSpiral();
         System.out.println(objMain.intMatrix.toString());
 
     }
